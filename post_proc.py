@@ -73,7 +73,7 @@ def main():
         cfgFile = "Input_2023postBPix.yml"
         jsonFileName = "golden_Json/Cert_Collisions2023_366442_370790_Golden.json"
         jetmetCorrector = createJMECorrector(isMC=isMC, dataYear="2023postBPix", jesUncert="All", jetType = "AK4PFPuppi", applyHEMfix=True)
-        modulesToRun.extend([jetmetCorrector(), muonScaleRes2018()])
+        modulesToRun.extend([jetmetCorrector(), muonScaleResRun3_2023BPix()])
 
     if moduleyear == "2023preBPix":
         """2023preBPix for identification of 2023preBPix data and 2023preBPix for identification of 2023preBPix MC
@@ -82,7 +82,7 @@ def main():
         cfgFile = "Input_2023preBPix.yml"
         jsonFileName = "golden_Json/Cert_Collisions2023_366442_370790_Golden.json"
         jetmetCorrector = createJMECorrector(isMC=isMC, dataYear="2023preBPix", jesUncert="All", jetType = "AK4PFPuppi", applyHEMfix=True)
-        modulesToRun.extend([jetmetCorrector(), muonScaleRes2018()])
+        modulesToRun.extend([jetmetCorrector(), muonScaleResRun3_2023BPix()])
 
     if moduleyear == "2022postEE":
         """2022postEE for identification of 2022postEE data and 2022postEE for identification of 2022postEE MC
@@ -91,7 +91,7 @@ def main():
         cfgFile = "Input_2022postEE.yml"
         jsonFileName = "golden_Json/Cert_Collisions2022_355100_362760_Golden.json"
         jetmetCorrector = createJMECorrector(isMC=isMC, dataYear="2022preEE", jesUncert="All", jetType = "AK4PFPuppi", applyHEMfix=True)
-        modulesToRun.extend([jetmetCorrector(), muonScaleRes2018()])
+        modulesToRun.extend([jetmetCorrector(), muonScaleResRun3_2022EE()])
 
     if moduleyear == "2022preEE":
         """2022preEE for identification of 2022preEE data and 2022preEE for identification of 2022preEE MC
@@ -100,6 +100,7 @@ def main():
         cfgFile = "Input_2022preEE.yml"
         jsonFileName = "golden_Json/Cert_Collisions2022_355100_362760_Golden.json"
         jetmetCorrector = createJMECorrector(isMC=isMC, dataYear="2022preEE", jesUncert="All", jetType = "AK4PFPuppi", applyHEMfix=True)
+        # modulesToRun.extend([jetmetCorrector(), muonScaleResRun3_2022EE()])
         modulesToRun.extend([jetmetCorrector(), muonScaleRes2018()])
 
     if moduleyear == "2018":
@@ -114,8 +115,8 @@ def main():
         gammaSF = lambda: gammaSFProducer("UL18")
         jetmetCorrector = createJMECorrector(isMC=isMC, dataYear="UL2018", jesUncert="All", jetType = "AK4PFchs", applyHEMfix=True)
         puidSF = lambda: JetSFMaker("%s" % 2018)
-        modulesToRun.extend([jetmetCorrector(), puidSF(), gammaSF(),LHEScaleSF(),puAutoWeight_UL2018(),muonScaleRes2018()])
-    
+        modulesToRun.extend([jetmetCorrector(), puidSF(), gammaSF(),LHEScaleSF(),puAutoWeight_UL2018(),muonScaleRes2018()])  # keep Run2 unchanged
+
     if moduleyear == "2017":
         year = moduleyear
         cfgFile = "Input_2017.yml"
@@ -127,7 +128,7 @@ def main():
         jetmetCorrector = createJMECorrector(isMC=isMC, dataYear="UL2017", jesUncert="All", jetType = "AK4PFchs",applyHEMfix=False)
         PrefireCorr2017 = lambda : PrefCorr('L1prefiring_jetpt_2017BtoF.root', 'L1prefiring_jetpt_2017BtoF', 'L1prefiring_photonpt_2017BtoF.root', 'L1prefiring_photonpt_2017BtoF')
         puidSF = lambda: JetSFMaker("%s" % 2018)
-        modulesToRun.extend([jetmetCorrector(), puidSF(), gammaSF(),LHEScaleSF(),PrefireCorr2017(),puAutoWeight_UL2017(),muonScaleRes2017()])
+        modulesToRun.extend([jetmetCorrector(), puidSF(), gammaSF(),LHEScaleSF(),PrefireCorr2017(),puAutoWeight_UL2017(),muonScaleRes2017()])  # keep Run2 unchanged
 
     if moduleyear == "2016preVFP":
         year = moduleyear
