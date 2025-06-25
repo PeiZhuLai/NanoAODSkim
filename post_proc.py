@@ -94,7 +94,7 @@ def main():
         jsonFileName = "golden_Json/Cert_Collisions2022_355100_362760_Golden.json"
         LHEScaleSF  = lambda : LHEScaleWeightProducer("2022EE")
         jetmetCorrector = createJMECorrector(isMC=isMC, dataYear="2022preEE", jesUncert="All", jetType = "AK4PFPuppi", applyHEMfix=True)
-        modulesToRun.extend([jetmetCorrector(),,LHEScaleSF(),puAutoWeight_UL2022PostEE(),muonScaleResRun3_2022EE()])
+        modulesToRun.extend([jetmetCorrector(),LHEScaleSF(),puAutoWeight_UL2022PostEE(),muonScaleResRun3_2022EE()])
 
     if moduleyear == "2022preEE":
         """2022preEE for identification of 2022preEE data and 2022preEE for identification of 2022preEE MC
@@ -104,7 +104,7 @@ def main():
         jsonFileName = "golden_Json/Cert_Collisions2022_355100_362760_Golden.json"
         LHEScaleSF  = lambda : LHEScaleWeightProducer("2022")
         jetmetCorrector = createJMECorrector(isMC=isMC, dataYear="2022preEE", jesUncert="All", jetType = "AK4PFPuppi", applyHEMfix=True)
-        modulesToRun.extend([jetmetCorrector(),,LHEScaleSF(),puAutoWeight_UL2022PreEE(),muonScaleResRun3_2022()])
+        modulesToRun.extend([jetmetCorrector(),LHEScaleSF(),puAutoWeight_UL2022PreEE(),muonScaleResRun3_2022()])
 
     if moduleyear == "2018":
         """UL2018 for identification of 2018 UL data and UL18 for identification of 2018 UL MC

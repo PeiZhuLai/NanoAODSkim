@@ -47,7 +47,7 @@ def get_map_from_stdout_files(cluster_id, log_path):
                 print("map: {0}".format(map)  )
     return outfiltlist, map
 
-def get_root_files_from_dir(directory):
+def get_root_files_from_dir(directory, map):
     """Get the list of output root files from the output directory.
 
     Args:
@@ -63,27 +63,29 @@ def get_root_files_from_dir(directory):
 
     root_files = []
     ValidRootFiles = []
-    for dirpath, dirnames, filenames in os.walk(directory):
-        for filename in filenames:
-            if filename.endswith('.root'):
-                full_path = os.path.join(dirpath, filename)
-                # print('Checking file: '+full_path)
-                root_files.append(full_path)
+    # for dirpath, dirnames, filenames in os.walk(directory):
+    #     for filename in filenames:
+    #         if filename.endswith('.root'):
+    #             full_path = os.path.join(dirpath, filename)
+    #             # print('Checking file: '+full_path)
+    #             root_files.append(full_path)
 
-                tfile = None
-                try:
-                    tfile = TFile.Open(full_path);
-                except:
-                    pass
-                if tfile:
-                    if (tfile.IsZombie() or tfile.TestBit(TFile.kRecovered) or tfile.GetListOfKeys().IsEmpty()):
+    #             tfile = None
+    
+    for filename, full_path in map.items():
+            try:
+                tfile = TFile.Open(full_path);
+            except:
+                pass
+            if tfile:
+                if (tfile.IsZombie() or tfile.TestBit(TFile.kRecovered) or tfile.GetListOfKeys().IsEmpty()):
 
-                        filelist_to_remove.append(filename)
-                    else:
-                        ValidRootFiles.append(filename)
-                else:
-                    print('File could not be opened, adding it to missing files')
                     filelist_to_remove.append(filename)
+                else:
+                    ValidRootFiles.append(filename)
+            else:
+                # print('File could not be opened, adding it to missing files')
+                filelist_to_remove.append(filename)
 
     print("Total root file in the directory: {0}".format(len(root_files)))
     print("length of corrupted root files: {0}".format(len(filelist_to_remove)))
@@ -147,7 +149,7 @@ def get_output_files_from_jdl(path_jdl):
                 # split will also add Arguments and = as two strings in the list so instead of 4, 6 is used
                 output_root_file = parts[2].split("/")[-1]
                 output_root_files.append(output_root_file)
-                map[output_root_file] = parts[3]+parts[2].split("/")[-1].split(".")[0]+"Skim.root"
+                map[output_root_file] = parts[3]
 
     return output_root_files, map
 
@@ -289,11 +291,11 @@ def main():
     if args.debug: print("root_file_list_from_jdl: {0}".format(root_file_list_from_jdl))
 
     # Step - 2: Get the root file information from the output directory
-    root_file_list = get_root_files_from_dir(output_dir)
+    root_file_list = get_root_files_from_dir(output_dir, map_in_out_files)
     print("length of root_file_list: {0}".format(len(root_file_list)))
     # print("root_file_list: {0}".format(root_file_list))
     if args.debug: print("root_file_list: {0}".format(root_file_list))
-    modified_list = [filename.replace('_Skim', '') for filename in root_file_list]
+    modified_list = [filename.replace('_skimmed', '') for filename in root_file_list]
     
     # Step - 3: Compare the two lists and find the missing root files
     # missing = list(set(root_file_list_from_jdl) - set(root_file_list))
