@@ -2,8 +2,10 @@
 drop * # start with all
 keep run
 keep Muon_corrected_pt
-keep Muon_correctedUp_pt
-keep Muon_correctedDown_pt
+keep Muon_scaleUp_pt
+keep Muon_scaleDown_pt
+keep Muon_smearUp_pt
+keep Muon_smearDown_pt
 
 keep Jet_eta
 keep Jet_pt_nom
