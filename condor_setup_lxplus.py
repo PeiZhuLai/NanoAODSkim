@@ -18,7 +18,7 @@ def main(args):
     use_custom_eos = args.use_custom_eos
     use_custom_eos_cmd = args.use_custom_eos_cmd
     InputFileFromWhereReadDASNames = args.input_file
-    skimmed_output_path = "/eos/project/h/htozg-dy-privatemc/HiggsDNA_skimmed"
+    skimmed_output_path = "/eos/home-p/pelai/HZa/mc_NATool"
     year = args.year
     isMC = args.isMC
 
@@ -29,7 +29,7 @@ def main(args):
     condor_file_name = args.condor_file_name
     condor_queue = args.condor_queue
     DontCreateTarFile = args.DontCreateTarFile
-    condor_file_name = 'submit_condor_jobs_HZG_'+submission_name
+    condor_file_name = 'submit_condor_jobs_HZa_'+submission_name
 
     # Create log files
     import infoCreaterGit

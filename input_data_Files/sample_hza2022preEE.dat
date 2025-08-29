@@ -1,0 +1,9 @@
+# Signal
+ALP_M5 /eos/home-p/pelai/HZa/private_mc/signal/run3/HZaTo2l2g_M5_NanoAODv12/
+ALP_M15 /eos/home-p/pelai/HZa/private_mc/signal/run3/HZaTo2l2g_M15_NanoAODv12/
+ALP_M30 /eos/home-p/pelai/HZa/private_mc/signal/run3/HZaTo2l2g_M30_NanoAODv12/
+# Bkg_MC
+DYGto2LG_10to50 /DYGto2LG-1Jets_MLL-50_PTG-10to50_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22NanoAODv12-130X_mcRun3_2022_realistic_v5-v2/NANOAODSIM
+DYGto2LG_50to100 /DYGto2LG-1Jets_MLL-50_PTG-50to100_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22NanoAODv12-130X_mcRun3_2022_realistic_v5-v3/NANOAODSIM
+DYJetsToLL /DYto2L-2Jets_MLL-50_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22NanoAODv13-133X_mcRun3_2022_realistic_ForNanov13_v1-v1/NANOAODSIM
+DYJetsToLL /DYto2L-2Jets_MLL-50_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22NanoAODv13-133X_mcRun3_2022_realistic_ForNanov13_v1_ext2-v2/NANOAODSIM
