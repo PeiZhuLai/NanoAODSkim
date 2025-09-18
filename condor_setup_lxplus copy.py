@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 # How to run:
 python3 condor_setup_lxplus.py
@@ -82,21 +81,17 @@ def main(args):
         outjdl_file.write("MY.WantOS = \"el7\"\n")
         count = 0
         count_jobs = 0
-        for line in in_file:
-            stripped = line.strip()
-            if not stripped or stripped.startswith("#"):
-                continue
+        for SampleDASName in in_file:
 
-            parts = stripped.split()  # 以任意數量空白/tab 分割
-            if len(parts) < 2:
-                print("Skipping malformed line:", stripped)
-                continue
-
-            higgsdna_sample_name, SampleDASName = parts[0], parts[1]
-
+            if SampleDASName[0] == "#": continue
+            
             print("============== SampleDASName %s" % SampleDASName)
-            count = count + 1
-            print("samplenameis:", SampleDASName)
+
+            count = count +1
+            higgsdna_sample_name = SampleDASName.split(" ")[0]
+            SampleDASName = SampleDASName.split(" ")[1]
+            print("samplenameis:",SampleDASName)
+            #if count > 1: break
             print(style.RED +"="*51+style.RESET+"\n")
             print ("==> Sample : ",count)
             sample_name = SampleDASName.split('/')[1]

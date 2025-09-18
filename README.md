@@ -29,7 +29,7 @@ nanoAOD skiming code for H->ZGamma studies.
    # patch PhysicsTools/NanoAODTools/python/postprocessing/analysis/nanoAOD_skim/nanoAOD_tools.patch
    cp PhysicsTools/NanoAODTools/python/postprocessing/analysis/nanoAOD_skim/data/btag/*.csv PhysicsTools/NanoAODTools/data/btagSF/.
    scram b
-   voms-proxy-init --voms cms --valid 168:00
+   voms-proxy-init --rfc --voms cms -valid 192:00
    cd $CMSSW_BASE/src/PhysicsTools/NanoAODTools/python/postprocessing/analysis/nanoAOD_skim
    
    #try this for test
