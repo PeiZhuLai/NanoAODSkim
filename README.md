@@ -17,20 +17,22 @@ nanoAOD skiming code for H->ZGamma studies.
    scram b
 
    cd PhysicsTools/
-   git clone -b HZG git@github.com:shaoweisong/NanoAODTools.git 
+   git clone -b HZG https://github.com/PeiZhuLai/NanoAODTools.git
    cd NanoAODTools
    scram b
 
 
    cd $CMSSW_BASE/src/PhysicsTools/NanoAODTools/python/postprocessing/analysis/
    rm -rf nanoAOD_skim
-   git clone -b HZG git@github.com:shaoweisong/NanoAODSkim.git nanoAOD_skim
+   git clone -b HZG https://github.com/PeiZhuLai/NanoAODSkim.git nanoAOD_skim
    cd $CMSSW_BASE/src/
    cmsenv
    # patch PhysicsTools/NanoAODTools/python/postprocessing/analysis/nanoAOD_skim/nanoAOD_tools.patch
+   
    cp PhysicsTools/NanoAODTools/python/postprocessing/analysis/nanoAOD_skim/data/btag/*.csv PhysicsTools/NanoAODTools/data/btagSF/.
    scram b
    voms-proxy-init --voms cms --valid 168:00
+
    cd $CMSSW_BASE/src/PhysicsTools/NanoAODTools/python/postprocessing/analysis/nanoAOD_skim
    
    #try this for test
